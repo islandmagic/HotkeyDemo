@@ -2,7 +2,10 @@
 
 A RubyMotion OS X app that takes the default OS X skeleton app, makes it run in the background and hides the main window, and then uses DDHotKey to implement a global hotkey (Cmd+Alt+H) to hide and show the app window.
 
-For the accompanying tutorial, see: http://kickcode.com/blog/2014/03/22/global-hotkeys-for-mac-os-x-apps-in-rubymotion.html
+Branches:
+
+* master - default app for hotkey handling functionality (http://kickcode.com/blog/2014/03/22/global-hotkeys-for-mac-os-x-apps-in-rubymotion.html)
+* custom_combo - adding the ability for the user to specify their own key combo to use as the global hotkey, saved between app sessions (http://kickcode.com/blog/2015/05/13/custom-user-hotkey-combo.html)
 
 ## Requirements
 
@@ -12,6 +15,7 @@ For the accompanying tutorial, see: http://kickcode.com/blog/2014/03/22/global-h
 ## Setup
 
 * git clone https://github.com/kickcode/HotkeyDemo.git && cd HotkeyDemo
+* git checkout <branch for tutorial>
 * bundle install
 * rake
 
@@ -21,7 +25,7 @@ For the accompanying tutorial, see: http://kickcode.com/blog/2014/03/22/global-h
 
 ## License
 
-Copyright 2014 Elliott Draper <el@kickcode.com>
+Copyright 2015 Elliott Draper <el@kickcode.com>
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
