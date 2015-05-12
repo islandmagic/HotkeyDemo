@@ -2,7 +2,7 @@ class AppDelegate
   def applicationDidFinishLaunching(notification)
     buildWindow
 
-    @hot_key_field.hotKey = self.registerHotKey(KVK_ANSI_H, (NSCommandKeyMask | NSAlternateKeyMask))
+    @hot_key_field.hotKey = self.registerHotKey(self.userKeyCode, self.userModifierFlags)
   end
 
   def buildWindow
@@ -29,8 +29,19 @@ class AppDelegate
   end
 
   def registerHotKey(keyCode, modifierFlags)
+    NSUserDefaults.standardUserDefaults['keyCode'] = keyCode
+    NSUserDefaults.standardUserDefaults['modifierFlags'] = modifierFlags
+
     center = DDHotKeyCenter.sharedHotKeyCenter
     center.unregisterAllHotKeys
     center.registerHotKeyWithKeyCode(keyCode, modifierFlags: modifierFlags, target: self, action: 'handleHotkey:', object: nil)
+  end
+
+  def userKeyCode
+    NSUserDefaults.standardUserDefaults['keyCode'] || KVK_ANSI_H
+  end
+
+  def userModifierFlags
+    NSUserDefaults.standardUserDefaults['modifierFlags'] || (NSCommandKeyMask | NSAlternateKeyMask)
   end
 end
